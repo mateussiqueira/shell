@@ -1,14 +1,14 @@
-# Configuração do Zsh para Desenvolvedores Flutter
+# Configuração do Zsh e Git para Desenvolvedores Flutter
 
 ![Flutter Logo](https://flutter.dev/images/flutter-logo-sharing.png)
 
 ## Visão geral
 
-Este documento descreve um script que automatiza a configuração do [Zsh](https://www.zsh.org/), um poderoso shell alternativo para Linux, com algumas customizações específicas para desenvolvedores Flutter. A configuração inclui a instalação do [Oh My Zsh](https://ohmyz.sh/), um framework de gerenciamento de configuração Zsh, o [Spaceship Prompt](https://github.com/denysdovhan/spaceship-prompt), um prompt minimalista, poderoso e extremamente personalizável, e vários plugins para aumentar a produtividade do desenvolvedor.
-
-Além disso, há um script separado chamado `git.sh` que configura vários atalhos úteis para comandos Git.
+Este documento descreve os scripts que automatizam a configuração do [Zsh](https://www.zsh.org/), um poderoso shell alternativo para Linux, e do Git, com algumas customizações específicas para desenvolvedores Flutter. A configuração do Zsh inclui a instalação do [Oh My Zsh](https://ohmyz.sh/), um framework de gerenciamento de configuração Zsh, o [Spaceship Prompt](https://github.com/denysdovhan/spaceship-prompt), um prompt minimalista, poderoso e extremamente personalizável, e vários plugins para aumentar a produtividade do desenvolvedor. A configuração do Git inclui a definição de atalhos de comandos comuns e a configuração do VS Code como o editor padrão.
 
 ## Como funciona
+
+### Script de Configuração do Zsh (shell.sh)
 
 1. **Atualização de pacotes**: O script começa atualizando todos os pacotes existentes no sistema com o comando `sudo apt-get update && sudo apt-get upgrade -y`.
 
@@ -28,25 +28,35 @@ Além disso, há um script separado chamado `git.sh` que configura vários atalh
 
 9. **Conclusão**: O script imprime uma mensagem informando que a configuração do Zsh foi concluída.
 
-O `git.sh` define vários aliases para comandos Git, tornando-os mais rápidos e fáceis de digitar. Além disso, ele configura o VS Code como o editor padrão do Git.
+### Script de Configuração do Git (git.sh)
 
-## Como rodar o script
+1. **Atualização de pacotes**: O script começa atualizando todos os pacotes existentes no sistema com o comando `sudo apt-get update && sudo apt-get upgrade -y`.
 
-Você pode rodar o script de configuração do Zsh com os seguintes passos:
+2. **Instalação do Git**: O Git é um sistema de controle de versão distribuído que permite o rastreamento de alterações no código-fonte durante o desenvolvimento de software. Ele é instalado com o comando `sudo apt-get install git -y`.
 
-1. Salve o script em um arquivo em seu computador. Por exemplo, você pode nomeá-lo como `setup_zsh.sh`.
+3. **Configuração do Git**: O script configura o Git para usar o VS Code como editor padrão com o comando `git config --global core.editor "code --wait"`.
+
+4. **Criação de aliases para comandos comuns do Git**: O script adiciona aliases (atalhos) para comandos comuns do Git ao arquivo ~/.gitconfig. Esses aliases simplificam o uso do Git no terminal.
+
+5. **Conclusão**: O script imprime uma mensagem informando que a configuração do Git foi concluída.
+
+### Script de Execução (run.sh)
+
+Este script oferece ao usuário a opção de executar um ou ambos os scripts de configuração descritos acima.
+
+## Como rodar os scripts
+
+Você pode rodar os scripts de configuração do Zsh e do Git com os seguintes passos:
+
+1. Salve os scripts em um diretório em seu computador. Você pode nomeá-los como `shell.sh`, `git.sh` e `run.sh`.
 
 2. Abra um terminal.
 
-3. Navegue até o diretório onde você salvou o script usando o comando `cd`. Por exemplo, se você salvou o script na sua pasta de Documentos, você usaria o comando `cd ~/Documents`.
+3. Navegue até o diretório onde você salvou os scripts usando o comando `cd`. Por exemplo, se você salvou os scripts na sua pasta de Documentos, você usaria o comando `cd ~/Documents`.
 
-4. Torne o script executável com o comando `chmod +x setup_zsh.sh`.
+4. Torne os scripts executáveis com o comando `chmod +x shell.sh git.sh run.sh`.
 
-5. Execute o script com o comando `./setup_zsh.sh`.
-
-O script irá agora executar, instalando o Zsh, o Oh My Zsh, o Spaceship Prompt e os plugins selecionados, além de configurar o Zsh como o seu shell padrão.
-
-Para rodar o script `git.sh`, siga os mesmos passos, substituindo `setup_zsh.sh` por `git.sh`.
+5. Execute o script `run.sh` com o comando `./run.sh`. Ele oferecerá opções para executar os scripts `shell.sh` e `git.sh`.
 
 ## Vantagens sobre o shell padrão
 
@@ -58,15 +68,9 @@ O Zsh oferece várias vantagens em relação ao Bash, o shell padrão na maioria
 
 - **Auto-completar**: Zsh tem um recurso de auto-completar mais avançado que permite completar o nome dos comandos, opções de comando, nomes de arquivo, etc.
 
-- **Melhor navegação no histórico**: O Zsh permite navegar no histórico de comandos de maneiras mais avançadas e intuitivas em comparação com o Bash.
+- **Melhor navegação no
 
-- **Plugins e temas**: Com Oh My Zsh, você pode personalizar a aparência e a funcionalidade do seu shell com uma ampla variedade de temas e plugins.
-
-Os desenvolvedores de Flutter se beneficiarão da eficiência e da personalização que o Zsh oferece. A capacidade de completar comandos, junto com sugestões automáticas e plugins adicionais, faz com que seja mais fácil e rápido executar comandos Flutter e Dart. 
-
-A aparência do terminal também é importante
-
- para desenvolvedores que passam muito tempo trabalhando nele, e o Spaceship Prompt fornece uma estética agradável e uma abundância de informações úteis direto no prompt.
+ histórico**: O Zsh permite pesquisar o histórico de comandos de maneira mais eficiente e intuitiva.
 
 ## Exemplos de Uso dos Alias Criados em `git.sh`
 
