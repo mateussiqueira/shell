@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Atualizar os pacotes existentes
-sudo apt-get update -y
-sudo apt-get upgrade -y
+# Verificar se o Homebrew está instalado e instalá-lo se não estiver
+if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Atualizar todos os pacotes existentes
+brew update && brew upgrade
 
 # Instalar Zsh
-sudo apt-get install -y zsh
+brew install zsh
 
 # Definir Zsh como shell padrão
 chsh -s $(which zsh)
