@@ -48,5 +48,21 @@ SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_CHAR_SYMBOL="❯"
 SPACESHIP_CHAR_SUFFIX=" "' >> ~/.zshrc
 
+# Verificar o caminho do VS Code
+vscode_path=$(which code)
+
+# Verificar se o comando 'which' encontrou o VS Code
+if [ -z "$vscode_path" ]; then
+    echo "VS Code não foi encontrado. Por favor, verifique se está instalado e disponível no PATH."
+else
+    # Adicionar o alias ao .zshrc
+    echo "alias code=\"$vscode_path\"" >> ~/.zshrc
+
+    # Recarregar o .zshrc
+    source ~/.zshrc
+
+    echo "Alias 'code' adicionado com sucesso ao seu .zshrc"
+fi
+
 # Fim do script
 echo 'Configuração do ZSH concluída.'
