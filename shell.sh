@@ -24,8 +24,16 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 # Alterar o tema para spaceship
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="spaceship"/g' ~/.zshrc
 
+# Se o diretório do Zinit existir, removê-lo
+if [ -d ~/.zinit ]; then
+    rm -rf ~/.zinit
+fi
+
 # Instalar ZInit para gerenciar plugins
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+# Recarregar o .zshrc
+source ~/.zshrc
 
 # Adicionar plugins ao .zshrc
 echo "zinit light zdharma/fast-syntax-highlighting" >> ~/.zshrc
